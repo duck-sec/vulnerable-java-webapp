@@ -22,8 +22,8 @@ The premise is a simple "is it up" type app, which executes a ping in the backgr
 - Includes command injection vulnerability
 - Can be leverged to SSRF in an AWS environment, for example to gather data from the AWS metadata service
 - appspec and buildspec installedif you'd like to deploy using a code pipeline in AWS
-![Screenshot](screenshot.jpg)
-![Screenshot2](screenshot2.jpg)
+![Screenshot](screenshot.png)
+![Screenshot2](screenshot2.png)
 
 
 ## Installation
