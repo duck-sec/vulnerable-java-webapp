@@ -62,6 +62,7 @@ if (command != null && !command.isEmpty()) {
 ```
 
 And then pass it to bash....
-`Process process = new ProcessBuilder("/bin/bash", "-c", command).start();`
+
+```Process process = new ProcessBuilder("/bin/bash", "-c", command).start();```
 
 
