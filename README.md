@@ -1,6 +1,6 @@
 # Vulnerable Java Webapp
 
-A simple java based webapp which contains a code injection vulnerability. 
+A simple java based webapp which contains a command injection vulnerability. 
 This is a vulnerable application for use in security testing and practice ONLY. Do not deploy anywhere in production!
  
 
@@ -43,7 +43,7 @@ Note that AWS requires some specific syntax to invoke long running commands as p
 
 A couple of ways to exploit the app:
 
-**Code execution:**
+**Command execution:**
 
 ```google.com && whoami```
 
